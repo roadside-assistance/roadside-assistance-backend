@@ -12,7 +12,9 @@ services:
     ports:
       - "5432:5432"
   web:
-    build: .
+    build:
+      dockerfile: ./docker/python/Dockerfile
+      context: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/application
