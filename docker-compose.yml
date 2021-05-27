@@ -4,13 +4,13 @@ services:
   db:
     image: postgres
     volumes:
-      - ./storage/postgres:/var/lib/postgresql/data
+      - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB:${POSTGRES_DB}
+      - POSTGRES_USER:${POSTGRES_USER}
+      - POSTGRES_PASSWORD:${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
   web:
     build:
       dockerfile: ./docker/python/Dockerfile
@@ -19,6 +19,6 @@ services:
     volumes:
       - .:/application
     ports:
-      - "8000:8000"
+      - "${DJANGO_PORT}:8000"
     depends_on:
       - db
