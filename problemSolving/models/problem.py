@@ -1,6 +1,7 @@
 from django.db import models
 
 from humanResources.models.citizen import Citizen
+from problemSolving.tasks import notify_expert
 
 
 class Problem(models.Model):
@@ -20,3 +21,7 @@ class Problem(models.Model):
     description = models.TextField()
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
     status = models.CharField(max_len=20, choices=STATUS_CHOICES)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        super().save(force_insert=False, force_update=False, using=None, update_fields=None)
+        notify_expert(self.id)

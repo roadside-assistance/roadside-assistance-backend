@@ -4,21 +4,38 @@ services:
   db:
     image: postgres
     volumes:
-      - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
+      - ./storage/postgres/data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB:${POSTGRES_DB}
-      - POSTGRES_USER:${POSTGRES_USER}
-      - POSTGRES_PASSWORD:${POSTGRES_PASSWORD}
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "5432:5432"
   web:
     build:
       dockerfile: ./docker/python/Dockerfile
       context: .
     command: python manage.py runserver 0.0.0.0:8000
+
     volumes:
       - .:/application
     ports:
-      - "${DJANGO_PORT}:8000"
+      - "8000:8000"
     depends_on:
       - db
+      - rabbitmq
+  rabbitmq:
+    image: rabbitmq:3-management
+    #    hostname: my-rabbit
+    volumes:
+      #      - ./docker/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
+      #      - ./docker/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./storage/rabbitmq/data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      - ./storage/rabbitmq/logs:/var/log/rabbitmq/log
+    ports:
+      - 5672:5672
+      - 15672:15672
+      #    environment:
+      #      - RABBITMQ_DEFAULT_USER:rabbitmq
+      #      - RABBITMQ_DEFAULT_PASS:rabbitmq
+      # The default user is created only if the database does not exist. Therefore the environment variables have no effect if the volume already exists.

@@ -23,6 +23,6 @@ echo POSTGRES_DATA_DIR=./storage/postgres >> .env
 echo -n "Please set Shecan.ir DNS (to this file /etc/resolv.conf on ubuntu) to start pulling docker images, then press ENTER to continue..."
 read notice
 
-docker-compose pull
+#docker-compose pull
 docker-compose build
 docker-compose up -d
