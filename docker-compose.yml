@@ -1,16 +1,16 @@
 version: "3"
 
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./storage/postgres/data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
+#  db:
+#    image: postgres
+#    volumes:
+#      - ./storage/postgres/data:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#    ports:
+#      - "5432:5432"
   web:
     build:
       dockerfile: ./docker/python/Dockerfile
@@ -22,7 +22,7 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+#      - db
       - rabbitmq
   rabbitmq:
     image: rabbitmq:3-management
