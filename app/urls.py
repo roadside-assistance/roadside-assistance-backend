@@ -11,4 +11,6 @@ urlpatterns = [
     path('problem-solving/get-assigned-problems/', GetAssignedProblems.as_view(), name='get-assigned-problems'),
     path('problem-solving/confirm-problem/', ConfirmProblem.as_view(), name='confirm-problem'),
     path('problem-solving/get-assigned-mission/', GetAssignedMission.as_view(), name='get-assigned-mission'),
+
+    path('chat/', include('chat.urls')),
 ]

@@ -1,7 +1,7 @@
 from django.db import models
 
 from humanResources.models.citizen import Citizen
-from problemSolving.tasks import notify_expert
+# from problemSolving.tasks import notify_expert
 
 
 class ProblemModel(models.Model):
@@ -28,4 +28,4 @@ class ProblemModel(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         super().save(force_insert=False, force_update=False, using=None, update_fields=None)
-        notify_expert(self.id)
+        # notify_expert(self.id)

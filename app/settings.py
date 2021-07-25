@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-+r0gf0#9wbhfg$00)akgau9e4n+1f2^#+k=!6ep9r@n5kgav1(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '207.182.143.36']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '207.182.143.36', '127.0.0.1']
 
 # Application definition
 
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'django_celery_results',
     'humanResources',
-    'problemSolving'
+    'problemSolving',
+    'channels',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CELERY_RESULT_BACKEND = 'django-cache'
 # CELERY_ACCEPT_CONTENT = ['json']
 # CELERY_TASK_SERIALIZER = 'json'
+
+ASGI_APPLICATION = "app.asgi.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
