@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from problemSolving.problem.model import ProblemModel
+
+from problem_solving.problem.model import ProblemModel
 
 
 class ProblemSerializer(serializers.ModelSerializer):

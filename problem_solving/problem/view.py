@@ -2,8 +2,15 @@ from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import viewsets
+from problem_solving.problem.model import ProblemModel
+from problem_solving.problem.serializer import ProblemSerializer
 
-from problemSolving.problem.model import ProblemModel
+
+class ProblemViewSet(viewsets.ModelViewSet):
+    queryset = ProblemModel.objects.all()
+    serializer_class = ProblemSerializer
+    # permission_classes =
 
 
 class IssueProblemView(APIView):
