@@ -1,8 +1,7 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from . import views
+from problem_solving.problem.view import ProblemViewSet
 
-urlpatterns = [
-    # path('problem', views.index, name='index'),
-    path(), # using a better router in 'app', using viewsets in here for problem
-]
+router = DefaultRouter()
+router.register(r'problems', ProblemViewSet, basename='problem')
+urlpatterns = router.urls
