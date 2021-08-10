@@ -14,4 +14,5 @@ urlpatterns = [
 
     path('chat/', include('chat.urls')),
     path('problem-solving/', include('problem_solving.urls')),
+    path('human-resources/', include('human_resources.urls')),
 ]
