@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'human_resources',
     'problem_solving',
     'channels',
-    'chat',
+    'notifier',
 ]
 
 MIDDLEWARE = [

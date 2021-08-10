@@ -3,6 +3,9 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import viewsets
+
+from human_resources.citizen.permission import IsCitizen
+from human_resources.user.permission import IsAuthenticated
 from problem_solving.problem.model import ProblemModel
 from problem_solving.problem.serializer import ProblemSerializer
 
@@ -10,7 +13,7 @@ from problem_solving.problem.serializer import ProblemSerializer
 class ProblemViewSet(viewsets.ModelViewSet):
     queryset = ProblemModel.objects.all()
     serializer_class = ProblemSerializer
-    # permission_classes =
+    permission_classes = [IsAuthenticated, IsCitizen]
 
 
 class IssueProblemView(APIView):

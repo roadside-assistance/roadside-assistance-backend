@@ -12,7 +12,7 @@ urlpatterns = [
     path('problem_solving/confirm-problem/', ConfirmProblem.as_view(), name='confirm-problem'),
     path('problem_solving/get-assigned-mission/', GetAssignedMission.as_view(), name='get-assigned-mission'),
 
-    path('chat/', include('chat.urls')),
+    path('notifier/', include('notifier.urls')),
     path('problem-solving/', include('problem_solving.urls')),
     path('human-resources/', include('human_resources.urls')),
 ]

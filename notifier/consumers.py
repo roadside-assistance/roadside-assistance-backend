@@ -2,6 +2,31 @@ import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 
+from human_resources.inspector.permission import IsInspector
+
+
+class InspectorConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = phone_number = self.scope['url_route']['kwargs']['phone']
+        password = self.scope['url_route']['kwargs']['password']
+
+        if IsInspector.is_inspector(phone_number, password):
+            async_to_sync(self.channel_layer.group_add)(
+                phone_number,
+                self.channel_name
+            )
+
+            self.accept()
+
+    def disconnect(self, code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def receive(self, text_data=None, bytes_data=None):
+        pass
+
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
