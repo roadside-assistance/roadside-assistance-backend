@@ -1,4 +1,4 @@
 .idea
-storage/*
+storage/sqlite/db.sqlite3
 app/__pycache__/
 .env
