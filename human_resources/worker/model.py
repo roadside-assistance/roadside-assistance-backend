@@ -1,8 +1,8 @@
 from django.db import models
 
-from human_resources.employee.model import Employee
-from human_resources.team.model import Team
+from human_resources.employee.model import EmployeeModel
+from human_resources.team.model import TeamModel
 
 
-class Worker(Employee):
-    team = models.ForeignKey(Team)
+class WorkerModel(EmployeeModel):
+    team = models.ForeignKey(TeamModel, on_delete=models.CASCADE)

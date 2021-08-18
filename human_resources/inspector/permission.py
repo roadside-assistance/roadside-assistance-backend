@@ -3,9 +3,9 @@ from pprint import pprint
 from rest_framework import permissions
 from rest_framework.request import Request
 
-from human_resources.citizen.model import Citizen
-from human_resources.inspector.model import Inspector
-from human_resources.user.model import User
+from human_resources.citizen.model import CitizenModel
+from human_resources.inspector.model import InspectorModel
+from human_resources.user.model import UserModel
 from human_resources.utill.password import pass_gen
 
 
@@ -16,6 +16,6 @@ class IsInspector(permissions.BasePermission):
         return self.is_inspector(password, phone_number)
 
     @staticmethod
-    def is_inspector(password, phone_number):
+    def is_inspector(phone_number, password):
         encoded_password = pass_gen(password)
-        return Inspector.objects.filter(phone_number=phone_number, password=encoded_password).count() == 1
+        return InspectorModel.objects.filter(phone_number=phone_number, password=encoded_password).count() == 1

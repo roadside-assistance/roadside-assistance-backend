@@ -15,4 +15,5 @@ urlpatterns = [
     path('notifier/', include('notifier.urls')),
     path('problem-solving/', include('problem_solving.urls')),
     path('human-resources/', include('human_resources.urls')),
+    path('machine-resources/', include('machine_resources.urls')),
 ]

@@ -1,6 +1,6 @@
-from human_resources.user.model import User
+from human_resources.user.model import UserModel
 from django.db import models
 
 
-class Employee(User):
+class EmployeeModel(UserModel):
     salary = models.BigIntegerField()

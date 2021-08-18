@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'problem_solving',
     'channels',
     'notifier',
+    'machine_resources'
 ]
 
 MIDDLEWARE = [

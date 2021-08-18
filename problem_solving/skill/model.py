@@ -1,5 +1,5 @@
 from django.db import models
 
 
-class TeamModel(models.Model):
+class SkillModel(models.Model):
     name = models.CharField(max_length=255)
