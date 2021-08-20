@@ -1,8 +1,7 @@
 from rest_framework.routers import DefaultRouter
 
-from problem_solving.problem.view import ProblemViewSet
-from problem_solving.skill.view import SkillViewSet
+from machine_resources.machine.view import MachineViewSet
 
 router = DefaultRouter()
-router.register(r'machines', ProblemViewSet, basename='machine')
+router.register(r'machines', MachineViewSet, basename='machine')
 urlpatterns = router.urls
