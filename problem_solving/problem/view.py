@@ -14,7 +14,7 @@ from problem_solving.problem.serializer import ProblemSerializer
 class ProblemViewSet(viewsets.ModelViewSet):
     queryset = ProblemModel.objects.all()
     serializer_class = ProblemSerializer
-    permission_classes = [IsAuthenticated, IsCitizen]
+    # permission_classes = [IsAuthenticated, IsCitizen]
 
 
 class IssueProblemView(APIView):

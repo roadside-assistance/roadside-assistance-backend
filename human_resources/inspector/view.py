@@ -10,5 +10,6 @@ class InspectorViewSet(viewsets.ModelViewSet):
     queryset = InspectorModel.objects.all()
     serializer_class = InspectorSerializer
 
-    permission_classes = [IsAuthenticated, #IsInspector
-     ]
+    # permission_classes = [IsAuthenticated,
+                          #IsInspector
+# ]

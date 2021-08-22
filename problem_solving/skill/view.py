@@ -8,4 +8,4 @@ from problem_solving.skill.serializer import SkillSerializer
 class SkillViewSet(viewsets.ModelViewSet):
     queryset = SkillModel.objects.all()
     serializer_class = SkillSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
