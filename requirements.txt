@@ -4,3 +4,5 @@ djangorestframework>=3.12
 channels~=3.0.4
 channels_redis
 asgiref~=3.4.1
+django-extensions
+django-cors-headers

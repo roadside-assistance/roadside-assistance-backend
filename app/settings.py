@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-+r0gf0#9wbhfg$00)akgau9e4n+1f2^#+k=!6ep9r@n5kgav1(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '207.182.143.36', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '207.182.143.36', '127.0.0.1', "*"]
 
 # Application definition
 
@@ -36,12 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_extensions',
     # 'django_celery_results',
     'human_resources',
     'problem_solving',
     'channels',
     'notifier',
-    'machine_resources'
+    'machine_resources',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -149,3 +151,5 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
