@@ -7,7 +7,13 @@ from problem_solving.city.city import City
 
 
 class InspectorModel(EmployeeModel):
+    class AuthorityType(models.TextChoices):
+        COUNTRY = 'COUNTRY'
+        PROVINCE = 'PROVINCE'
+        STATE = 'STATE'
+
     town_under_control = models.CharField(max_length=30, choices=City.choices, default=None)
+    authority_type = models.CharField(max_length=20, choices=AuthorityType.choices, default=AuthorityType.STATE)
 
     @classmethod
     def random(cls):
