@@ -16,6 +16,7 @@ class ProblemModel(models.Model):
         ASSIGNED = 'ASSIGNED'
         APPROVED = 'APPROVED'
         REJECTED = 'REJECTED'
+        PENDING_TEAM = 'PENDING_TEAM'
         STARTED = 'STARTED'
         ENDED = 'ENDED'
 
@@ -44,6 +45,7 @@ def assign_to_inspector(sender, instance: ProblemModel, **kwargs):
     elif instance.status == ProblemModel.ProblemStatus.APPROVED:
         team = TeamModel.random()
         instance.assigned_to_team = team
+        instance.status = ProblemModel.ProblemStatus.PENDING_TEAM
         instance.save()
 
 
