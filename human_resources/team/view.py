@@ -12,17 +12,12 @@ class TeamViewSet(viewsets.ModelViewSet):
     queryset = TeamModel.objects.all()
     serializer_class = TeamSerializer
 
-    # permission_classes = [IsAuthenticated, IsInspector ]
 
     @action(detail=True)
     def assigned_problems(self, request, pk=None):
         team_id = pk
         problems = ProblemModel.objects.filter(assigned_to_team_id=team_id)
 
-        # page = self.paginate_queryset(problems)
-        # if page is not None:
-        #     serializer = self.get_serializer(page, many=True)
-        #     return self.get_paginated_response(serializer.data)
 
         serializer = ProblemSerializer(problems, many=True)
         return Response(serializer.data)

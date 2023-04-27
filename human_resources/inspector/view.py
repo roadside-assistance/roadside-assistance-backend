@@ -9,7 +9,3 @@ from human_resources.user.permission import IsAuthenticated
 class InspectorViewSet(viewsets.ModelViewSet):
     queryset = InspectorModel.objects.all()
     serializer_class = InspectorSerializer
-
-    # permission_classes = [IsAuthenticated,
-                          #IsInspector
-# ]
